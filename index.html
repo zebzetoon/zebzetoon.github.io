@@ -22,6 +22,26 @@
         <span class="header-site-name">Zebze Toon</span>
     </div>
 
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" role="navigation" aria-label="Ana navigasyon">
+        <a href="#" class="nav-link active" data-page="home" aria-current="page">
+            <i class="fas fa-home"></i>
+            <span>Ana Sayfa</span>
+        </a>
+        <a href="#" class="nav-link" data-page="daily">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Günlük</span>
+        </a>
+        <a href="#" class="nav-link" data-page="library">
+            <i class="fas fa-columns"></i>
+            <span>Kütüphane</span>
+        </a>
+        <a href="#" class="nav-link" data-page="bookshelf">
+            <i class="fas fa-book-open"></i>
+            <span>Kitaplık</span>
+        </a>
+    </nav>
+
     <div class="header-actions">
         <label for="colorPickerInput" class="header-icon-btn" style="margin: 0; cursor: pointer; z-index: 10000; position: relative;">
             <i class="fas fa-palette"></i>
@@ -198,10 +218,50 @@
 </div>
 
 <div class="bottom-nav">
-    <div class="nav-item active" onclick="goToHome()"><i class="fas fa-home"></i>Ana Sayfa</div>
-    <div class="nav-item"><i class="fas fa-calendar-alt"></i>Günlük</div>
-    <div class="nav-item"><i class="fas fa-columns"></i>Kütüphane</div>
-    <div class="nav-item"><i class="fas fa-book-open"></i>Kitaplık</div>
+    <div class="nav-item active" data-page="home" onclick="goToHome()"><i class="fas fa-home"></i>Ana Sayfa</div>
+    <div class="nav-item" data-page="daily"><i class="fas fa-calendar-alt"></i>Günlük</div>
+    <div class="nav-item" data-page="library"><i class="fas fa-columns"></i>Kütüphane</div>
+    <div class="nav-item" data-page="bookshelf"><i class="fas fa-book-open"></i>Kitaplık</div>
+</div>
+
+<!-- Kitaplık Sayfası -->
+<div id="bookshelf-view" style="display: none;">
+    <button class="back-btn-float" onclick="goToHome()">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+    
+    <div class="bookshelf-content">
+        <div class="bookshelf-header">
+            <h1><i class="fas fa-book-open"></i> Kitaplığım</h1>
+            <p class="bookshelf-count">0 seri</p>
+        </div>
+        
+        <!-- Boş Durum -->
+        <div id="bookshelf-empty" class="bookshelf-empty">
+            <i class="fas fa-bookmark"></i>
+            <h3>Kitaplığınız Boş</h3>
+            <p>Beğendiğiniz serileri kitaplığınıza ekleyin!</p>
+        </div>
+        
+        <!-- Seri Listesi -->
+        <div id="bookshelf-list" class="manga-list-container">
+            <!-- Seriler buraya eklenecek -->
+        </div>
+    </div>
+    
+    <div class="site-footer">
+        <img src="https://raw.githubusercontent.com/zebzetoon/zebzetoon.github.io/main/logo/zlogo.png" alt="Zebze Toon Logo" class="footer-logo" onclick="window.location.href='/'" style="cursor: pointer;">
+        <div class="footer-title" onclick="window.location.href='/'" style="cursor: pointer;">Zebze Toon</div>
+        <p class="footer-desc">
+            Biz Zebze Toon ekibiyiz. Serileri kaliteli şekilde sizlerle buluşturan çeviri ekibiyiz.
+        </p>
+        <div class="footer-buttons">
+            <a href="https://discord.gg/gjfPRpCPCR" target="_blank" class="footer-btn"><i class="fab fa-discord"></i></a>
+            <a href="#" target="_blank" class="footer-btn"><i class="fas fa-mug-hot"></i></a>
+            <a href="#" class="footer-btn"><i class="fas fa-globe"></i></a>
+            <a href="#" class="footer-btn dmca-btn">DMCA</a>
+        </div>
+    </div>
 </div>
 
 <!-- Yukarı Çık Butonu -->
