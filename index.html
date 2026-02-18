@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="version" content="2.0.2">
+    <meta name="version" content="2.0.3">
     <meta name="a0dd893ee3a150fc0596fc75753e4ab193d65a3a" content="a0dd893ee3a150fc0596fc75753e4ab193d65a3a" />
     <title>ZebzeManga</title>
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/zebzetoon/zebzetoon.github.io/main/logo/zlogo.png">
@@ -194,6 +194,12 @@
     
     <div id="reader-loader" class="loader-container" style="display:none;">
         <div class="spinner"></div>
+    </div>
+
+    <!-- Seri Başlığı ve Bölüm Bilgisi - Resmin üstünde -->
+    <div class="reader-info-bar">
+        <div id="reader-series-title" class="reader-series-name" onclick="goToSeriesDetail()"></div>
+        <div id="reader-chapter-number" class="reader-chapter-num"></div>
     </div>
 
     <div id="box" class="reader-content"></div>
