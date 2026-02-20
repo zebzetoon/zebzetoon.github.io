@@ -279,12 +279,43 @@ function initializeOpenGraphTags() {
   console.log('Open Graph meta tags initialized:', {
     series: params.seri,
     chapter: params.bolum,
-    tagsUpdated: metaTags.length
+    tagsUpdated: metaTags.length,
+    seriesFound: seriesData !== null
   });
 }
 
+/**
+ * Wait for ARSIV to be populated before initializing meta tags
+ * 
+ * This function checks if ARSIV exists and has data.
+ * If not, it waits and retries up to 50 times (5 seconds total).
+ * This ensures meta tags are updated with correct series data.
+ */
+function waitForARSIVAndInitialize() {
+  let attempts = 0;
+  const maxAttempts = 50; // 5 seconds max wait
+  
+  const checkARSIV = setInterval(() => {
+    attempts++;
+    
+    // Check if ARSIV exists and has data
+    if (typeof ARSIV !== 'undefined' && ARSIV && Object.keys(ARSIV).length > 0) {
+      clearInterval(checkARSIV);
+      initializeOpenGraphTags();
+      return;
+    }
+    
+    // Timeout after max attempts
+    if (attempts >= maxAttempts) {
+      clearInterval(checkARSIV);
+      console.warn('ARSIV not loaded after 5 seconds, initializing with defaults');
+      initializeOpenGraphTags();
+    }
+  }, 100); // Check every 100ms
+}
+
 // Execute on DOMContentLoaded to ensure meta tags are updated early
-document.addEventListener('DOMContentLoaded', initializeOpenGraphTags);
+document.addEventListener('DOMContentLoaded', waitForARSIVAndInitialize);
 
 // Also execute on popstate event for SPA navigation support
 window.addEventListener('popstate', initializeOpenGraphTags);
